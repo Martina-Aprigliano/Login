@@ -1,0 +1,177 @@
+/* General Body Styles */
+body {
+  font-family: "Be Vietnam Pro", "Noto Sans", sans-serif;
+  display: flex;
+  flex-direction: column; /* Stack header and content vertically */
+  align-items: center; /* Center content horizontally */
+  background-color: #f0f2f5; /* Light grey background */
+  color: #333;
+  margin: 0;
+  min-height: 100vh;
+}
+
+/* Styles for Authentication and User Session Containers */
+#auth-container, #user-session {
+  background-color: white;
+  padding: 25px; /* Increased padding */
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  margin-top: 30px; /* More space from header */
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 450px; /* Slightly wider for better form layout */
+  text-align: center; /* Center text and inline elements */
+}
+
+#login-section, #signup-section {
+  margin-bottom: 25px; /* Space between login and signup sections if both were visible */
+}
+
+/* Last section should not have bottom margin if it's the last child */
+#login-section:last-child, #signup-section:last-child {
+  margin-bottom: 0;
+}
+
+h2 {
+  color: #111418; /* Darker heading color */
+  margin-bottom: 20px; /* Space below heading */
+  font-size: 24px; /* Larger heading text */
+}
+
+/* Input field styling */
+input[type="email"], input[type="password"] {
+  width: calc(100% - 24px); /* Adjust width considering padding */
+  padding: 12px; /* More padding */
+  margin-bottom: 15px; /* More space between inputs */
+  border: 1px solid #ccc;
+  border-radius: 6px; /* Slightly more rounded corners */
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+input[type="email"]:focus, input[type="password"]:focus {
+  border-color: #0c77f2; /* Highlight focus */
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(12, 119, 242, 0.2); /* Focus ring */
+}
+
+/* General Button Styling */
+button, .button { /* Added .button class for general use if needed */
+  padding: 12px 18px; /* More padding */
+  background-color: #0c77f2; /* Primary button color */
+  color: white;
+  border: none;
+  border-radius: 6px; /* Slightly more rounded corners */
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  width: 100%; /* Make form buttons full width */
+  transition: background-color 0.2s ease-in-out; /* Smooth transition */
+}
+
+button:hover, .button:hover {
+  background-color: #0a63d0; /* Darker shade on hover */
+}
+
+/* Logout Button Specific Styling - Placed in Header, so Tailwind might override some aspects */
+/* This ID is on the button in the header now */
+#logout-button {
+  background-color: #dc3545; /* Distinct red color for logout/danger */
+  /* Tailwind classes will handle other aspects like padding, text color (white is good) */
+}
+
+#logout-button:hover {
+  background-color: #c82333; /* Darker red on hover */
+}
+
+/* Message Area Styling */
+#message-area {
+  margin-top: 20px; /* More space above message area */
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 15px;
+  min-height: 40px; /* Ensure it has some height even when empty */
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.success-message {
+  background-color: #d1e7dd; /* Softer green */
+  color: #0f5132;
+  border: 1px solid #badbcc;
+}
+
+.error-message {
+  background-color: #f8d7da;
+  color: #842029;
+  border: 1px solid #f5c2c7;
+}
+
+/* User Session Display */
+#user-session {
+  /* General #auth-container styles apply, which is good */
+  text-align: center;
+}
+
+#user-session p {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 15px; /* Space before logout button if it were inside this div */
+}
+
+#user-email-display {
+  font-weight: bold;
+  color: #0c77f2;
+}
+
+/* Responsive Design Adjustments */
+@media (max-width: 768px) {
+  /* Header elements are handled by Tailwind's responsive classes */
+
+  #auth-container, #user-session {
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 20px; /* Slightly less padding on smaller screens */
+    max-width: none; /* Allow it to take more width */
+  }
+
+  h2 {
+    font-size: 22px; /* Slightly smaller headings */
+  }
+
+  input[type="email"], input[type="password"], button {
+    font-size: 15px; /* Adjust font size for smaller devices */
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    /* The main layout flex is already centering items */
+  }
+
+  #auth-container, #user-session {
+    margin-top: 15px; /* Reduce top margin */
+    padding: 15px; /* Further reduce padding */
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  input[type="email"], input[type="password"], button {
+    padding: 10px; /* Adjust padding for very small screens */
+  }
+
+  /* The header's logout button uses Tailwind, which should be responsive.
+     If #logout-button was not in the header, we might add:
+  #logout-button {
+    padding: 10px 12px;
+    font-size: 15px;
+  }
+  */
+}
+
+/* Utility class for hidden elements (redundant if using JS to set display:none directly, but good practice) */
+.hidden {
+  display: none !important; /* Ensure it overrides other display properties */
+}
